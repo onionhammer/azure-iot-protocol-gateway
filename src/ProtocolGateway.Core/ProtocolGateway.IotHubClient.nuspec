@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Microsoft.Azure.Devices.ProtocolGateway.Providers.CloudStorage</id>
+    <id>Microsoft.Azure.Devices.ProtocolGateway.Core</id>
     <version>1.1.1</version>
     <title>Microsoft Azure IoT protocol gateway framework - Azure Storage persistence providers</title>
     <authors>Microsoft Azure</authors>
@@ -12,6 +12,6 @@
     <language>en-US</language>
   </metadata>
   <files>
-    <file src="bin\$configuration$\Microsoft.Azure.Devices.ProtocolGateway.Providers.CloudStorage.dll" target="lib\net451\Microsoft.Azure.Devices.ProtocolGateway.Providers.CloudStorage.dll" />
+    <file src="bin\$configuration$\Microsoft.Azure.Devices.ProtocolGateway.Core.dll" target="lib\net451\Microsoft.Azure.Devices.ProtocolGateway.Core.dll" />
   </files>
 </package>

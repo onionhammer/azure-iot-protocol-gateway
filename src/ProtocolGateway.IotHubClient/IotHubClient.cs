@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.IotHubClient
             this.settings = settings;
             this.allocator = allocator;
             this.messageAddressConverter = messageAddressConverter;
+
+            deviceClient.OperationTimeoutInMilliseconds = 0;// uint.MaxValue;// 6 * 60 * 1000;
         }
 
         public static async Task<IMessagingServiceClient> CreateFromConnectionStringAsync(string deviceId, string connectionString,
