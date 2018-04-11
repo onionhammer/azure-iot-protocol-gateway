@@ -30,4 +30,5 @@ nuget.exe
 *.lock.json
 *.db
 .idea.*/
+.vscode/*
 *.nupkg
