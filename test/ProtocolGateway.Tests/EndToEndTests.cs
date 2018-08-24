@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.Tests
     using DotNetty.Buffers;
     using DotNetty.Codecs.Mqtt;
     using DotNetty.Codecs.Mqtt.Packets;
-    using DotNetty.Common.Concurrency;
     using DotNetty.Common.Internal.Logging;
     using DotNetty.Handlers.Logging;
     using DotNetty.Handlers.Tls;
@@ -220,7 +219,7 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.Tests
                 }
                     .ToSignature();
 
-            EventHubClient eventHubClient = EventHubClient.CreateFromConnectionString(iotHubConnectionString, "messages/events");
+            Microsoft.ServiceBus.Messaging.EventHubClient eventHubClient = EventHubClient.CreateFromConnectionString(iotHubConnectionString, "messages/events");
             EventHubConsumerGroup ehGroup = eventHubClient.GetDefaultConsumerGroup();
 
             string[] partitionIds = (await eventHubClient.GetRuntimeInformationAsync()).PartitionIds;
