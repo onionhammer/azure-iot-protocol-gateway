@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.Tests
     using DotNetty.Transport.Channels.Sockets;
     using global::ProtocolGateway.Host.Common;
     using Microsoft.Azure.Devices.Client;
-    using Microsoft.Azure.Devices.Common.Security;
     using Microsoft.Azure.Devices.ProtocolGateway.Instrumentation;
     using Microsoft.Azure.Devices.ProtocolGateway.IotHubClient;
     using Microsoft.Azure.Devices.ProtocolGateway.IotHubClient.Addressing;
@@ -210,7 +209,7 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.Tests
 
             Device device = await registryManager.GetDeviceAsync(this.deviceId);
             this.deviceSas =
-                new SharedAccessSignatureBuilder
+                new Client.SharedAccessSignatureBuilder
                 {
                     Key = device.Authentication.SymmetricKey.PrimaryKey,
                     Target = $"{hubConnectionStringBuilder.HostName}/devices/{this.deviceId}",
