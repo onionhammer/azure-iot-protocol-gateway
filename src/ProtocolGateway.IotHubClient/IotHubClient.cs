@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.IotHubClient
                 tcpSettings,
                 webSocketSettings
             });
+
+            // This helps in usage instrumentation at IotHub service.
+            client.ProductInfo = $"protocolgateway/poolsize={connectionPoolSize}";
+
             try
             {
                 await client.OpenAsync();
@@ -261,16 +265,10 @@ namespace Microsoft.Azure.Devices.ProtocolGateway.IotHubClient
             }
         }
 
-        public async Task DisposeAsync(Exception cause)
+        public Task DisposeAsync(Exception cause)
         {
-            try
-            {
-                await this.deviceClient.CloseAsync();
-            }
-            catch (IotHubException ex)
-            {
-                throw ComposeIotHubCommunicationException(ex);
-            }
+            this.deviceClient.Dispose();
+            return Task.FromResult(0);
         }
 
         internal static IAuthenticationMethod DeriveAuthenticationMethod(IAuthenticationMethod currentAuthenticationMethod, IotHubDeviceIdentity deviceIdentity)
